@@ -1,13 +1,95 @@
+html, body, #root {
+    height: 100vh;
+  }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+.App{
+    position: relative;
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+
+}
+.App-header{
+    width: 100%;
+    margin-top: 2rem;
+}
+.App-intro{
+    font-size: 1rem;
+}
+.container{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    height: 80%;
+    /* border: 2px solid red; */
+}
+.sidebar{
+    width:25%;
+    min-width: 150px;
+   
+}
+.searchbox{
+    padding-right: 1rem;
+    margin-bottom: 2rem;
+}
+.searchbox input {
+    width: 100%;
+    padding: 10px 10px 10px 5px;
+    font-size: 1.5rem;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+
+ul{
+    list-style: none;
+    line-height: 3rem;
+    font-size: 1.5rem;
+}
 
 /*-------------------MAP--------------------*/
 
-.map {
-  height: 300px;
+.map{
+    position: fixed;
+    right: 4rem;
+    top: 6.5rem;
+    width: 60%;
+    height: 80%;
 }
- 
-@media screen and (min-width: 1024px){
-    .map {
-        height: 500px;
+
+
+/*---------------MEDIA QUERIES---------------------------*/
+
+@media only screen and (max-width: 600px){
+    .App{
+        width: 95%;
     }
-}
+    .App-header{
+        margin-top: 1rem;
+    }
+    .map{
+        position: relative;
+        height: 18rem;
+        width: 100%;
+        z-index: 999;
+        right: 0;
+        top: 0;
+      }
+    .App-intro{
+        font-size: 1rem;
+    }
+    .searchbox{
+        display: none;
+    }
+    .placeslist{
+        margin-top: 1rem;
+    }
+    }

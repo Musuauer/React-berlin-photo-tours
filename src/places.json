@@ -1,0 +1,44 @@
+[
+    {
+    "name": "Kreuzberg",
+    "coordinates": {
+      "lat": "52.499078",
+      "lng": "13.432026"
+    }
+  },
+  {
+    "name": "Tempelhofer Feld",
+    "coordinates": {
+      "lat": "52.475679",
+      "lng": "13.415632"
+    }
+  },
+  {
+    "name": "Rixdorf",
+    "coordinates": {
+      "lat": "52.474501",
+      "lng": "13.446964"
+    }
+  },
+  {
+    "name": "RAW Gelände",
+    "coordinates": {
+      "lat": "52.507014",
+      "lng": "13.453916"
+    }
+  },
+  {
+    "name": "Potsdamerplatz",
+    "coordinates": {
+      "lat": "52.509861",
+      "lng": "13.376148"
+    }
+  },
+  {
+    "name": "Tiergarten",
+    "coordinates": {
+      "lat": "52.514543",
+      "lng": "13.371186"
+    }
+  }
+]

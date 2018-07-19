@@ -1,19 +1,33 @@
 import React, { Component } from 'react'
 import './App.css'
-import GoogleMapLoader from 'react-google-maps-loader'
+import Map from './Map'
+import Searchbox from './Searchbox'
+import PlacesList from './PlacesList'
+import Header from './Header'
+import * as places from './places.json'
 
 class App extends Component {
+
   render () {
     return (
       <div className='App'>
-        <header className='App-header'>
-          <h1 className='App-title'>Berlin Photo-tours</h1>
-        </header>
-        <p className='App-intro'>
-          This is where the slogan goes.
-        </p>
 
-        <GoogleMapLoader/>
+        <Header />
+
+        <div className='container'>
+
+          <Map
+            places={places}
+          />
+
+          <div className='sidebar'>
+            <Searchbox />
+            <PlacesList
+              places={places}
+            />
+          </div>
+
+        </div>
       </div>
     )
   }
