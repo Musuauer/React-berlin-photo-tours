@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
+import Marker from './Marker'
 
-const Marker = ({ text }) => <div>{text}</div>
+// const Marker = ({ text }) => <div className='maker-text'>{text}</div>
 
 const myKey = 'AIzaSyDWSSc0yFXxZFgSE1XjqCwF6F9oA6hmujA'
 
@@ -23,19 +24,18 @@ class Map extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-         {this.props.places.map(place =>
-         (
-          <Marker
-            key={place.name}
-            lat={place.coordinates.lat}
-            lng={place.coordinates.lng}
-            img={this.markerImg}
-            text={place.name}
-          />
-         )
+          {this.props.places.map(place =>
+            (
+              <Marker
+                key={place.name}
+                lat={place.coordinates.lat}
+                lng={place.coordinates.lng}
+                name={place.name}
+              />
+            )
 
-         )}
-          
+          )}
+
         </GoogleMapReact>
       </div>
     )

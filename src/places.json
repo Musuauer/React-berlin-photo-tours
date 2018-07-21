@@ -2,7 +2,7 @@
     {
     "name": "Kreuzberg",
     "coordinates": {
-      "lat": "52.499078",
+      "lat": "52.499378",
       "lng": "13.432026"
     }
   },
@@ -10,13 +10,13 @@
     "name": "Tempelhofer Feld",
     "coordinates": {
       "lat": "52.475679",
-      "lng": "13.415632"
+      "lng": "13.410002"
     }
   },
   {
     "name": "Rixdorf",
     "coordinates": {
-      "lat": "52.474501",
+      "lat": "52.474500",
       "lng": "13.446964"
     }
   },

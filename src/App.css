@@ -21,6 +21,7 @@ html, body, #root {
     margin-top: 2rem;
 }
 .App-intro{
+    color: rgb(89, 89, 216);
     font-size: 1rem;
 }
 .container{
@@ -29,7 +30,6 @@ html, body, #root {
     display: flex;
     flex-wrap: wrap;
     height: 80%;
-    /* border: 2px solid red; */
 }
 .sidebar{
     width:25%;
@@ -43,16 +43,20 @@ html, body, #root {
 .searchbox input {
     width: 100%;
     padding: 10px 10px 10px 5px;
-    font-size: 1.5rem;
-    border: none;
-    border-bottom: 1px solid black;
+    font-size: 1.2rem;
+    /* border: none; */
+    /* border-bottom: 1px solid black; */
     outline: none;
 }
 
 ul{
     list-style: none;
     line-height: 3rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+}
+ul li:hover{
+    color: rgb(89, 89, 216);
+    cursor: pointer;
 }
 
 /*-------------------MAP--------------------*/
@@ -64,6 +68,17 @@ ul{
     width: 60%;
     height: 80%;
 }
+.marker{
+    width: 30px;
+}
+.camera-icon{
+    fill: rgb(89, 89, 216);
+    
+}
+.marker-name{
+    visibility: hidden;    /*----toDo hover----*/
+}
+
 
 
 /*---------------MEDIA QUERIES---------------------------*/

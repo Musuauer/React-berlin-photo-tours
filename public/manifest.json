@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "photo tours",
+  "name": "Berlin photo-tours",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,22 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Searchbox extends Component {
-  static defaultProps = {
-   
-  }
+function Searchbox (updateQuery) {
+  return (
+    <div className='searchbox'>
+      <input
+        type='text'
+        placeholder='Search'
+        onChange={(event) => { updateQuery(event.target.value) }}
+      />
+    </div>
 
-  render () {
-    return(
-        <div className="searchbox">
-          <input
-            type='text'
-            placeholder='Search by place'
-            // onChange={(event) => { updateQuery(event.target.value) }}
-          />
-        </div>
-        
-    )
-  }
+  )
 }
 
 export default Searchbox
