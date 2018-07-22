@@ -7,6 +7,7 @@ import Header from './Header'
 import * as places from './places.json'
 
 class App extends Component {
+
   render () {
     return (
       <div className='App'>
