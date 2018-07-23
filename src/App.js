@@ -7,19 +7,35 @@ import Header from './Header'
 import * as places from './places.json'
 
 class App extends Component {
-  state={
+  state = {
+    isMarkerShown: false,
     locations: [],
-    markers: []
+    currentLocation: {}
   }
+
   componentDidMount () {
-    places.map(place => {
+    places.forEach(place => {
       this.setState(prevState => ({
         locations: [...prevState.locations, place]
       }))
-      this.setState(prevState => ({
-        markers: [...prevState.locations, place]
-      }))
-    }
+    })
+    this.delayedShowMarker()
+  }
+
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({ isMarkerShown: true })
+    }, 3000)
+  }
+
+  handleMarkerClick = () => {
+    this.setState({ isMarkerShown: false })
+    this.delayedShowMarker()
+  }
+
+  setCurrentLocation = (e) => {
+    this.setState({ currentLocation: e.currentTarget.innerText },
+      () => console.log(this.state.currentLocation)
     )
   }
 
@@ -32,20 +48,24 @@ class App extends Component {
         <div className='container'>
 
           <Map
-            markers={this.state.markers}
+            isMarkerShown={this.state.isMarkerShown}
+            onMarkerClick={this.handleMarkerClick}
+            locations={this.state.locations}
+            currentLocation={this.state.currentLocation}
           />
-
           <div className='sidebar'>
             <Searchbox
               updateQuery={this.updateQuery}
             />
             <PlacesList
               locations={this.state.locations}
+              setCurrentLocation={this.setCurrentLocation}
             />
           </div>
 
         </div>
       </div>
+
     )
   }
 }

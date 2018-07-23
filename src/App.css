@@ -61,12 +61,16 @@ ul li:hover{
 
 /*-------------------MAP--------------------*/
 
-.map{
+.map-container{
+    width: 60%;
+    height: 80vh;
     position: fixed;
     right: 4rem;
     top: 6.5rem;
-    width: 60%;
-    height: 80%;
+}
+.map{
+    width: 100%;
+    height: 100%;
 }
 .marker{
     width: 30px;

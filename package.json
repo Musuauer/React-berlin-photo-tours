@@ -9,7 +9,9 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-google-maps": "^9.4.5",
+    "react-scripts": "1.1.4",
+    "recompose": "^0.27.1"
   },
   "scripts": {
     "start": "react-scripts start",
