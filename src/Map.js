@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 import Marker from './Marker'
-
-// const Marker = ({ text }) => <div className='maker-text'>{text}</div>
-
-const myKey = 'AIzaSyDWSSc0yFXxZFgSE1XjqCwF6F9oA6hmujA'
+import InfoWindow from './InfoWindow'
+import { render } from 'react-dom'
 
 class Map extends Component {
   static defaultProps = {
@@ -15,22 +13,35 @@ class Map extends Component {
     zoom: 12,
     markerImg: '/berlin-photo-tours/public/Camera.svg'
   }
+  createInfoWindow (e, map) {
+    const infoWindow = new window.google.maps.InfoWindow({
+      content: '<div id="infoWindow" />',
+      position: { lat: e.lat(), lng: e.lng() }
+    })
+    infoWindow.addListener('domready', e => {
+      render(<InfoWindow />, document.getElementById('infoWindow'))
+    })
+    infoWindow.open(map)
+  }
 
   render () {
     return (
       <div className='map'>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: myKey }}
+          bootstrapURLKeys={{ key: 'AIzaSyDWSSc0yFXxZFgSE1XjqCwF6F9oA6hmujA' }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          {this.props.places.map(place =>
+          {this.props.markers.map(marker =>
             (
               <Marker
-                key={place.name}
-                lat={place.coordinates.lat}
-                lng={place.coordinates.lng}
-                name={place.name}
+                key={marker.name}
+                lat={marker.coordinates.lat}
+                lng={marker.coordinates.lng}
+                name={marker.name}
+                onClick={(e) => {
+                  console.log('map', GoogleMapReact, 'e', e)
+                }}
               />
             )
 

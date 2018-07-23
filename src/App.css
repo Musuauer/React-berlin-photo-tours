@@ -75,10 +75,6 @@ ul li:hover{
     fill: rgb(89, 89, 216);
     
 }
-.marker-name{
-    visibility: hidden;    /*----toDo hover----*/
-}
-
 
 
 /*---------------MEDIA QUERIES---------------------------*/

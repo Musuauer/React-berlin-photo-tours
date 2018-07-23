@@ -1,13 +1,12 @@
 import React from 'react'
 
-function PlacesList (places) {
+function PlacesList (props) {
   return (
     <div className='placeslist'>
       <ul>
-        {console.log('json:', places.places)}
-        {places.places.map(place =>
-          <li key={place.name}>
-            {place.name}
+        {props.locations.map(location =>
+          <li key={location.name}>
+            {location.name}
           </li>
         )}
       </ul>

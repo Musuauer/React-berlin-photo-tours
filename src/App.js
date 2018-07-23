@@ -7,6 +7,21 @@ import Header from './Header'
 import * as places from './places.json'
 
 class App extends Component {
+  state={
+    locations: [],
+    markers: []
+  }
+  componentDidMount () {
+    places.map(place => {
+      this.setState(prevState => ({
+        locations: [...prevState.locations, place]
+      }))
+      this.setState(prevState => ({
+        markers: [...prevState.locations, place]
+      }))
+    }
+    )
+  }
 
   render () {
     return (
@@ -17,7 +32,7 @@ class App extends Component {
         <div className='container'>
 
           <Map
-            places={places}
+            markers={this.state.markers}
           />
 
           <div className='sidebar'>
@@ -25,7 +40,7 @@ class App extends Component {
               updateQuery={this.updateQuery}
             />
             <PlacesList
-              places={places}
+              locations={this.state.locations}
             />
           </div>
 
