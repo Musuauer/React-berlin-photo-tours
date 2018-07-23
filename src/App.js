@@ -1,23 +1,32 @@
 import React, { Component } from 'react'
 import './App.css'
+
 import Map from './Map'
 import Searchbox from './Searchbox'
 import PlacesList from './PlacesList'
 import Header from './Header'
 import * as places from './places.json'
 
-class App extends Component {
+export default class App extends Component {
+  state = {
+    zoom: 14,
+    maptype: '',
+    place_formatted: '',
+    place_id: '',
+    place_location: '',
+    locations: places
+  }
 
   render () {
     return (
-      <div className='App'>
+      <div id='app'>
 
         <Header />
-
         <div className='container'>
 
           <Map
-            places={places}
+            locations={this.state.locations}
+            // markers={marker}
           />
 
           <div className='sidebar'>
@@ -25,7 +34,7 @@ class App extends Component {
               updateQuery={this.updateQuery}
             />
             <PlacesList
-              places={places}
+              locations={this.state.locations}
             />
           </div>
 
@@ -34,5 +43,3 @@ class App extends Component {
     )
   }
 }
-
-export default App

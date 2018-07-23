@@ -9,13 +9,16 @@ html, body, #root {
     font-family: Helvetica, sans-serif;
 }
 
-.App{
+#app{
     position: relative;
     height: 100%;
     width: 90%;
     margin: 0 auto;
 
 }
+#root, #app, #map {
+    height: 100%;
+  }
 .App-header{
     width: 100%;
     margin-top: 2rem;
@@ -61,8 +64,8 @@ ul li:hover{
 
 /*-------------------MAP--------------------*/
 
-.map{
-    position: fixed;
+#map{
+    position: fixed !important;
     right: 4rem;
     top: 6.5rem;
     width: 60%;
@@ -84,14 +87,14 @@ ul li:hover{
 /*---------------MEDIA QUERIES---------------------------*/
 
 @media only screen and (max-width: 600px){
-    .App{
+    #app{
         width: 95%;
     }
     .App-header{
         margin-top: 1rem;
     }
-    .map{
-        position: relative;
+    #map{
+        position: relative !important;
         height: 18rem;
         width: 100%;
         z-index: 999;

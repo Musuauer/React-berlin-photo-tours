@@ -1,42 +1,45 @@
 import React, { Component } from 'react'
-import GoogleMapReact from 'google-map-react'
+
 import Marker from './Marker'
 
-// const Marker = ({ text }) => <div className='maker-text'>{text}</div>
-
-const myKey = 'AIzaSyDWSSc0yFXxZFgSE1XjqCwF6F9oA6hmujA'
-
 class Map extends Component {
-  static defaultProps = {
-    center: {
-      lat: 52.502941,
-      lng: 13.403169
-    },
-    zoom: 12,
-    markerImg: '/berlin-photo-tours/public/Camera.svg'
+  state= {
+    map: new window.google.maps.Map(document.getElementById('map'), {
+      center: {lat: 52.502941, lng: 13.403169},
+      zoom: 13,
+      mapTypeId: 'roadmap'
+    })
+  }
+  componentDidMount () {
+    this.state.map.addListener('zoom_changed', () => {
+      this.setState({
+        zoom: this.state.map.getZoom()
+      })
+    })
+
+    this.state.map.addListener('maptypeid_changed', () => {
+      this.setState({
+        maptype: this.state.map.getMapTypeId()
+      })
+    })
   }
 
   render () {
     return (
-      <div className='map'>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: myKey }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-        >
-          {this.props.places.map(place =>
-            (
-              <Marker
-                key={place.name}
-                lat={place.coordinates.lat}
-                lng={place.coordinates.lng}
-                name={place.name}
-              />
-            )
+      <div id='map'>
+        {/* {this.props.locations.map(place =>
+          (
+            <Marker
+              map={this.state.map}
+              key={place.name}
+              lat={place.coordinates.lat}
+              lng={place.coordinates.lng}
+              name={place.name}
+            />
+          )
 
-          )}
-
-        </GoogleMapReact>
+        )} */}
+        {console.log('map', this.state)}
       </div>
     )
   }
