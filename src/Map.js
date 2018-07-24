@@ -45,7 +45,7 @@ class Map extends Component {
         key={location.name}
         position={{ lat: location.coordinates.lat, lng: location.coordinates.lng }}
         defaultAnimation={google.maps.Animation.DROP}
-        icon={(location.name === this.props.currentLocation) ? ({ url: 'http://maps.google.com/mapfiles/ms/icons/blue.png', scaledSize: new google.maps.Size(64, 64) }) : ({ url: 'http://maps.google.com/mapfiles/ms/icons/red.png' })
+        icon={(location.name === this.props.currentLocation) ? ({ url: './Camera.png', scaledSize: new google.maps.Size(54, 54) }) : ({ url: 'http://maps.google.com/mapfiles/ms/icons/red.png' })
         }
         onClick={() => {
           this.props.toggleLocationsActive(location.name)
