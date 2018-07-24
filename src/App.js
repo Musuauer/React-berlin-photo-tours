@@ -10,7 +10,8 @@ class App extends Component {
   state = {
     isMarkerShown: false,
     locations: [],
-    currentLocation: {}
+    currentLocation: {},
+    isOpen: false
   }
 
   componentDidMount () {
@@ -39,17 +40,11 @@ class App extends Component {
     )
   }
 
-  onMarkerClick: () => () => ({
-    iconUrl: 'http://maps.google.com/mapfiles/ms/icons/blue.png'
-  })
-
-  // withStateHandlers(() => ({
-  //   isOpen: false,
-  // }), {
-  //   onToggleOpen: ({ isOpen }) => () => ({
-  //     isOpen: !isOpen,
-  //   })
-  // })
+  toggleLocationsActive = locationName => {
+    this.setState({ currentLocation: locationName },
+      () => console.log(this.state.currentLocation)
+    )
+  }
 
   render () {
     return (
@@ -64,6 +59,7 @@ class App extends Component {
             onMarkerClick={this.handleMarkerClick}
             locations={this.state.locations}
             currentLocation={this.state.currentLocation}
+            toggleLocationsActive={this.toggleLocationsActive}
           />
           <div className='sidebar'>
             <Searchbox
