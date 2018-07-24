@@ -25,7 +25,7 @@ class App extends Component {
   delayedShowMarker = () => {
     setTimeout(() => {
       this.setState({ isMarkerShown: true })
-    }, 3000)
+    }, 2000)
   }
 
   handleMarkerClick = () => {
@@ -38,6 +38,18 @@ class App extends Component {
       () => console.log(this.state.currentLocation)
     )
   }
+
+  onMarkerClick: () => () => ({
+    iconUrl: 'http://maps.google.com/mapfiles/ms/icons/blue.png'
+  })
+
+  // withStateHandlers(() => ({
+  //   isOpen: false,
+  // }), {
+  //   onToggleOpen: ({ isOpen }) => () => ({
+  //     isOpen: !isOpen,
+  //   })
+  // })
 
   render () {
     return (
