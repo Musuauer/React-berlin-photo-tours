@@ -4,7 +4,7 @@ import Map from './Map'
 import Searchbox from './Searchbox'
 import PlacesList from './PlacesList'
 import Header from './Header'
-import * as places from './places.json'
+import places from './places.json'
 
 class App extends Component {
   state = {
@@ -12,40 +12,56 @@ class App extends Component {
     locations: [],
     currentLocation: {},
     query: '',
-    filteredLocations: [],
+    filteredLocations: []
   }
 
   componentDidMount = () => {
-    this.setState(
-      () => {
-        places.forEach(place => {
-          this.setState(prevState => ({
-            locations: [...prevState.locations, place]
-          }))
-        })
-      },
-      () => { this.setState({filteredLocations: this.state.locations}) }
-    )
+    const placesArray = places
 
+    this.setState(
+      { locations: placesArray },
+      () => this.setState((prevState) => {
+        return {filteredLocations: prevState.locations}
+      }))
     this.delayedShowMarker()
+  }
+
+  getFlickr = () => {
+    const flickrKey = '2c26b3886ab51247626d4745d7ae21c8'
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${this.state.currentLocation}&per_page=3&page=1&format=json&nojsoncallback=1`)
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (jsonResponse) {
+        let picArray = jsonResponse.photos.photo.map((pic) => {
+          var srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg'
+          return (
+            <img alt={this.state.currentLocation} src={srcPath} className='picture' key={srcPath} />
+          )
+        })
+        this.setState({ pictures: picArray })
+      }.bind(this))
+    console.log('photos:', this.state.pictures)
+    console.log('current location', this.state.currentLocation)
   }
 
   delayedShowMarker = () => {
     setTimeout(() => {
       this.setState({
-        isMarkerShown: true})
+        isMarkerShown: true
+      })
     }, 2000)
   }
 
   setCurrentLocation = (e) => {
     this.setState({ currentLocation: e.currentTarget.innerText },
-      () => console.log(this.state.currentLocation)
+      this.getFlickr
     )
   }
 
   toggleLocationsActive = locationName => {
     this.setState({ currentLocation: locationName },
-      () => console.log(this.state.currentLocation)
+      this.getFlickr
     )
   }
 
@@ -89,6 +105,7 @@ class App extends Component {
             locations={this.state.filteredLocations}
             currentLocation={this.state.currentLocation}
             toggleLocationsActive={this.toggleLocationsActive}
+            pictures={this.state.pictures}
           />
           <div className='sidebar'>
             <Searchbox

@@ -42,7 +42,8 @@ class Map extends Component {
         {location.name === this.props.currentLocation && (
           <InfoWindow
             onCloseClick={this.onToggleOpen}>
-            <div>
+            <div className='infoWindow'>
+              {this.props.pictures}
               {location.name}
             </div>
           </InfoWindow>
