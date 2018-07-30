@@ -5,8 +5,6 @@ import Searchbox from './Searchbox'
 import PlacesList from './PlacesList'
 import Header from './Header'
 import * as places from './places.json'
-import escapeRegExp from 'escape-string-regexp'
-
 
 class App extends Component {
   state = {
@@ -14,27 +12,29 @@ class App extends Component {
     locations: [],
     currentLocation: {},
     query: '',
-    filteredLocations: []
+    filteredLocations: [],
   }
 
   componentDidMount = () => {
-    places.forEach(place => {
-      this.setState(prevState => ({
-        locations: [...prevState.locations, place]
-      }))
-    })
+    this.setState(
+      () => {
+        places.forEach(place => {
+          this.setState(prevState => ({
+            locations: [...prevState.locations, place]
+          }))
+        })
+      },
+      () => { this.setState({filteredLocations: this.state.locations}) }
+    )
 
     this.delayedShowMarker()
   }
 
   delayedShowMarker = () => {
-
     setTimeout(() => {
-      this.setState({ 
-        isMarkerShown: true, 
-        filteredLocations: this.state.locations})
+      this.setState({
+        isMarkerShown: true})
     }, 2000)
-
   }
 
   setCurrentLocation = (e) => {
@@ -58,10 +58,17 @@ class App extends Component {
   updateQuery = (query) => {
     this.setState({ query })
     if (query) {
-      const match = new RegExp(escapeRegExp(this.state.query), 'i') // 'i' means 'ignore case'
-      this.setState({ filteredLocations: this.state.locations.filter((location) => match.test(location.name))})
+      this.setState({
+        filteredLocations: this.state.locations
+          .filter((location) => location.name
+            .toLowerCase()
+            .indexOf(query.toLowerCase()) === 0)
+      })
     } else {
-      this.setState({ filteredLocations: this.state.locations})
+      this.setState({
+        filteredLocations: this.state.locations,
+        currentLocation: {}
+      })
     }
   }
 
@@ -70,7 +77,6 @@ class App extends Component {
   }
 
   render () {
-
     return (
       <div className='App'>
 
