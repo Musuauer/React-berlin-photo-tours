@@ -18,25 +18,13 @@ class Map extends Component {
     this.setState(prevState => ({
       isOpen: !prevState.isOpen
     }))
-    console.log('isopencalled', this.state.isOpen)
-  }
-  handleToggleOpen = (markerId) => {
-    this.setState({
-      isOpen: true
-    })
-  }
-
-  handleToggleClose = (markerId) => {
-    this.setState({
-      isOpen: false
-    })
   }
 
   render () {
     return (
       <GoogleMap
         defaultZoom={13}
-        defaultCenter={{ lat: 52.502941, lng: 13.403169 }}
+        center={{ lat: 52.502941, lng: 13.403169 }}
       >
 
         {this.props.isMarkerShown &&
@@ -45,7 +33,7 @@ class Map extends Component {
         key={location.name}
         position={{ lat: location.coordinates.lat, lng: location.coordinates.lng }}
         defaultAnimation={google.maps.Animation.DROP}
-        icon={(location.name === this.props.currentLocation) ? ({ url: './Camera.png', scaledSize: new google.maps.Size(54, 54) }) : ({ url: 'http://maps.google.com/mapfiles/ms/icons/red.png' })
+        icon={(location.name === this.props.currentLocation) ? ({ url: './Camera.png', scaledSize: new google.maps.Size(34, 34) }) : ({ url: 'http://maps.google.com/mapfiles/ms/icons/red.png' })
         }
         onClick={() => {
           this.props.toggleLocationsActive(location.name)
