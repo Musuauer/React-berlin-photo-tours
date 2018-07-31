@@ -92,13 +92,15 @@ ul li:hover{
 .name{
     margin-bottom: 1rem;
     font-weight: 500;
+    font-size: 1.2rem;
+
 }
 .picture{
     width: 100%;
     margin-bottom: 1rem;
 }
 .credits{
-    margin-top: 1rem;
+    margin: 1rem 0;
 }
 
 

@@ -8,7 +8,9 @@ function PlacesList (props) {
           ? (
             props.locations.map(location =>
               <li key={location.name}
-                onClick={((e) => props.setCurrentLocation(e))}>
+                onClick={() => {
+                  props.setCurrentLocation(location)
+                }}>
                 {location.name}
               </li>
             )

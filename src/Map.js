@@ -37,7 +37,7 @@ class Map extends Component {
         icon={(location.name === this.props.currentLocation) ? ({ url: './Camera.png', scaledSize: new google.maps.Size(34, 34) }) : ({ url: 'http://maps.google.com/mapfiles/ms/icons/red.png' })
         }
         onClick={() => {
-          this.props.toggleLocationsActive(location)
+          this.props.setCurrentLocation(location)
         }}
       >
         {location.name === this.props.currentLocation && (

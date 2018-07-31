@@ -28,6 +28,7 @@ class App extends Component {
     this.delayedShowMarker()
   }
 
+  // get Flickr photos, code adapted from: https://www.youtube.com/watch?v=RkXotG7YUek
   getFlickr = () => {
     const flickrKey = '2c26b3886ab51247626d4745d7ae21c8'
     fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${this.state.currentLocation}&per_page=10&page=1&sort=relevance&format=json&nojsoncallback=1`)
@@ -50,6 +51,19 @@ class App extends Component {
       })
   }
 
+  getWikipedia = () => {
+    let term = this.state.currentLocation
+    let searchUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search='
+    let contentUrl = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles='
+    let url = searchUrl + term
+
+    fetch(url)
+      .then(function (response) {
+        console.log(response)
+        return response.json()
+      })
+  }
+
   delayedShowMarker = () => {
     setTimeout(() => {
       this.setState({
@@ -58,26 +72,16 @@ class App extends Component {
     }, 2000)
   }
 
-  setCurrentLocation = (e) => {
-    this.emptyPictures()
-    this.setState({ currentLocation: e.currentTarget.innerText },
-      this.getFlickr
-    )
-  }
+  setCurrentLocation = (location) => {
+    console.log('e', location)
+    if (this.state.currentLocation === location.name) {
 
-  toggleLocationsActive = location => {
-    this.emptyPictures()
-    this.setState({
-      currentLocation: location.name
-    },
-    this.getFlickr
-    )
-  }
-
-  changeMarginsInfoWindow =() => {
-    const infoWindowParent = document.getElementsByClassName('infoWindow')
-    // infoWindowParent.parentNode.parentNode.parentNode.parentNode.parentNode.className = 'marginsToMap'
-    console.log(infoWindowParent)
+    } else {
+      this.emptyPictures()
+      this.setState({ currentLocation: location.name },
+        this.getFlickr
+      )
+    }
   }
 
   emptyPictures = () => {
@@ -124,7 +128,7 @@ class App extends Component {
             isMarkerShown={this.state.isMarkerShown}
             locations={this.state.filteredLocations}
             currentLocation={this.state.currentLocation}
-            toggleLocationsActive={this.toggleLocationsActive}
+            setCurrentLocation={this.setCurrentLocation}
             pictures={this.state.pictures}
             center={this.state.center}
             emptyPictures={this.emptyPictures}

@@ -7,6 +7,13 @@
     }
   },
   {
+    "name": "Potsdamerplatz",
+    "coordinates": {
+      "lat": 52.509861,
+      "lng": 13.376148
+    }
+  },
+  {
     "name": "Tempelhofer Feld",
     "coordinates": {
       "lat": 52.475679,
@@ -14,10 +21,10 @@
     }
   },
   {
-    "name": "Rixdorf",
+    "name": "Tiergarten",
     "coordinates": {
-      "lat": 52.474500,
-      "lng": 13.446964
+      "lat": 52.514543,
+      "lng": 13.371186
     }
   },
   {
@@ -28,17 +35,11 @@
     }
   },
   {
-    "name": "Potsdamerplatz",
+    "name": "Rixdorf",
     "coordinates": {
-      "lat": 52.509861,
-      "lng": 13.376148
-    }
-  },
-  {
-    "name": "Tiergarten",
-    "coordinates": {
-      "lat": 52.514543,
-      "lng": 13.371186
+      "lat": 52.474500,
+      "lng": 13.446964
     }
   }
+
 ]
