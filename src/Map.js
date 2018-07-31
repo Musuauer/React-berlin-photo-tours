@@ -24,7 +24,7 @@ class Map extends Component {
     return (
       <GoogleMap
         defaultZoom={12}
-        center={{ lat: 52.502941, lng: 13.403169 }}
+        center={{ lat: this.props.center.lat, lng: this.props.center.lng }}
       >
 
         {this.props.isMarkerShown &&
@@ -36,7 +36,7 @@ class Map extends Component {
         icon={(location.name === this.props.currentLocation) ? ({ url: './Camera.png', scaledSize: new google.maps.Size(34, 34) }) : ({ url: 'http://maps.google.com/mapfiles/ms/icons/red.png' })
         }
         onClick={() => {
-          this.props.toggleLocationsActive(location.name)
+          this.props.toggleLocationsActive(location)
         }}
       >
         {location.name === this.props.currentLocation && (

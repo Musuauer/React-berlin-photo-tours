@@ -12,7 +12,8 @@ class App extends Component {
     locations: [],
     currentLocation: {},
     query: '',
-    filteredLocations: []
+    filteredLocations: [],
+    center: { lat: 52.502941, lng: 13.403169 }
   }
 
   componentDidMount = () => {
@@ -59,9 +60,12 @@ class App extends Component {
     )
   }
 
-  toggleLocationsActive = locationName => {
-    this.setState({ currentLocation: locationName },
-      this.getFlickr
+  toggleLocationsActive = location => {
+    this.setState({
+      currentLocation: location.name,
+      center: { lat: location.coordinates.lat, lng: location.coordinates.lng }
+    },
+    this.getFlickr
     )
   }
 
@@ -106,6 +110,7 @@ class App extends Component {
             currentLocation={this.state.currentLocation}
             toggleLocationsActive={this.toggleLocationsActive}
             pictures={this.state.pictures}
+            center={this.state.center}
           />
           <div className='sidebar'>
             <Searchbox
