@@ -24,7 +24,7 @@ class Map extends Component {
     return (
       <GoogleMap
         defaultZoom={12}
-        center={{ lat: this.props.center.lat, lng: this.props.center.lng }}
+        defaultCenter={{ lat: this.props.center.lat, lng: this.props.center.lng }}
       >
 
         {this.props.isMarkerShown &&
