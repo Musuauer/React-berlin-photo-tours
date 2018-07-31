@@ -28,10 +28,14 @@ class App extends Component {
     this.delayedShowMarker()
   }
 
+  getAPIs = () => {
+    this.getFlickr()
+    this.getWikipedia()
+  }
   // get Flickr photos, code adapted from: https://www.youtube.com/watch?v=RkXotG7YUek
   getFlickr = () => {
     const flickrKey = '2c26b3886ab51247626d4745d7ae21c8'
-    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${this.state.currentLocation}&per_page=10&page=1&sort=relevance&format=json&nojsoncallback=1`)
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${this.state.currentLocation.name}&per_page=10&page=1&sort=relevance&format=json&nojsoncallback=1`)
       .then(function (response) {
         return response.json()
       })
@@ -39,7 +43,7 @@ class App extends Component {
         let picArray = jsonResponse.photos.photo.map((pic) => {
           var srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg'
           return (
-            <img alt={this.state.currentLocation} src={srcPath} className='picture' key={srcPath} />
+            <img alt={this.state.currentLocation.name} src={srcPath} className='picture' key={srcPath} />
           )
         })
         this.setState({ pictures: picArray })
@@ -51,16 +55,21 @@ class App extends Component {
       })
   }
 
+  // get Wikipedia text, code adapted from: https://www.youtube.com/watch?v=RPz75gcHj18
   getWikipedia = () => {
-    let term = this.state.currentLocation
-    let searchUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search='
-    let contentUrl = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles='
-    let url = searchUrl + term
-
-    fetch(url)
+    let that = this
+    console.log(this.state.currentLocation.id)
+    let term = this.state.currentLocation.id
+    fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&exintro=1&prop=extracts&formatversion=2&titles=${term.replace(/\s+/g, '_')}`)
       .then(function (response) {
-        console.log(response)
         return response.json()
+      })
+      .then(function (jsonResponse) {
+        let page = jsonResponse.query.pages
+        let pageId = Object.keys(jsonResponse.query.pages)[0]
+        let content = page[pageId].extract
+
+        that.setState({ wikiText: content })
       })
   }
 
@@ -73,26 +82,18 @@ class App extends Component {
   }
 
   setCurrentLocation = (location) => {
-    console.log('e', location)
-    if (this.state.currentLocation === location.name) {
+    if (this.state.currentLocation.name === location.name) {
 
     } else {
       this.emptyPictures()
-      this.setState({ currentLocation: location.name },
-        this.getFlickr
+      this.setState({ currentLocation: location },
+        this.getAPIs
       )
     }
   }
 
   emptyPictures = () => {
-    console.log('empty pictures')
     this.setState({ pictures: [] })
-  }
-
-  handleChange () {
-    this.setState({
-      searchString: this.refs.search.value
-    })
   }
 
   updateQuery = (query) => {
@@ -112,10 +113,6 @@ class App extends Component {
     }
   }
 
-  clearQuery = () => {
-    this.setState({ query: '' })
-  }
-
   render () {
     return (
       <div className='App'>
@@ -127,9 +124,10 @@ class App extends Component {
           <Map
             isMarkerShown={this.state.isMarkerShown}
             locations={this.state.filteredLocations}
-            currentLocation={this.state.currentLocation}
+            currentLocation={this.state.currentLocation.name}
             setCurrentLocation={this.setCurrentLocation}
             pictures={this.state.pictures}
+            text={this.state.wikiText}
             center={this.state.center}
             emptyPictures={this.emptyPictures}
           />

@@ -49,7 +49,7 @@ class Map extends Component {
                   {location.name}
                 </div>
                 <div className='wiki-text'>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi tempore quia esse hic, quos odio cum quas dignissimos inventore magnam impedit nam accusamus harum. Corporis ad voluptates, voluptas esse est repudiandae quo quibusdam temporibus quasi labore, officiis minima tempore. Quae dicta inventore minima sed quibusdam quisquam, corrupti repellat reiciendis numquam!
+                  {this.props.text}
                 </div>
 
               </div>

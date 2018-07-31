@@ -1,20 +1,23 @@
 [
     {
     "name": "Kreuzberg",
+    "id": "Kreuzberg",
     "coordinates": {
       "lat": 52.499378,
       "lng": 13.432026
     }
   },
   {
-    "name": "Potsdamerplatz",
+    "name": "Potsdamer Platz",
+    "id": "Potsdamer Platz",
     "coordinates": {
       "lat": 52.509861,
       "lng": 13.376148
     }
   },
   {
-    "name": "Tempelhofer Feld",
+    "name": "Tempelhof Airport",
+    "id": "Berlin Tempelhof Airport",
     "coordinates": {
       "lat": 52.475679,
       "lng": 13.410002
@@ -22,6 +25,7 @@
   },
   {
     "name": "Tiergarten",
+    "id": "Tiergarten (park)",
     "coordinates": {
       "lat": 52.514543,
       "lng": 13.371186
@@ -29,6 +33,7 @@
   },
   {
     "name": "RAW Gelände",
+    "id": "Berlin Warschauer Straße station",
     "coordinates": {
       "lat": 52.507014,
       "lng": 13.453916
@@ -36,6 +41,7 @@
   },
   {
     "name": "Rixdorf",
+    "id": "Neukölln (locality)",
     "coordinates": {
       "lat": 52.474500,
       "lng": 13.446964
