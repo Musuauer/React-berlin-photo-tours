@@ -13,7 +13,8 @@ class App extends Component {
     currentLocation: {},
     query: '',
     filteredLocations: [],
-    center: { lat: 52.502941, lng: 13.403169 }
+    center: { lat: 52.502941, lng: 13.403169 },
+    pictures: []
   }
 
   componentDidMount = () => {
@@ -29,7 +30,7 @@ class App extends Component {
 
   getFlickr = () => {
     const flickrKey = '2c26b3886ab51247626d4745d7ae21c8'
-    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${this.state.currentLocation}&per_page=3&page=1&format=json&nojsoncallback=1`)
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${this.state.currentLocation}&per_page=10&page=1&sort=relevance&format=json&nojsoncallback=1`)
       .then(function (response) {
         return response.json()
       })
@@ -42,8 +43,11 @@ class App extends Component {
         })
         this.setState({ pictures: picArray })
       }.bind(this))
-    console.log('photos:', this.state.pictures)
-    console.log('current location', this.state.currentLocation)
+      .catch(error => {
+        alert(`Flickr images could not load, sorry`)
+        console.log(error)
+        return error
+      })
   }
 
   delayedShowMarker = () => {
@@ -55,18 +59,30 @@ class App extends Component {
   }
 
   setCurrentLocation = (e) => {
+    this.emptyPictures()
     this.setState({ currentLocation: e.currentTarget.innerText },
       this.getFlickr
     )
   }
 
   toggleLocationsActive = location => {
+    this.emptyPictures()
     this.setState({
-      currentLocation: location.name,
-      center: { lat: location.coordinates.lat, lng: location.coordinates.lng }
+      currentLocation: location.name
     },
     this.getFlickr
     )
+  }
+
+  changeMarginsInfoWindow =() => {
+    const infoWindowParent = document.getElementsByClassName('infoWindow')
+    // infoWindowParent.parentNode.parentNode.parentNode.parentNode.parentNode.className = 'marginsToMap'
+    console.log(infoWindowParent)
+  }
+
+  emptyPictures = () => {
+    console.log('empty pictures')
+    this.setState({ pictures: [] })
   }
 
   handleChange () {
@@ -111,6 +127,7 @@ class App extends Component {
             toggleLocationsActive={this.toggleLocationsActive}
             pictures={this.state.pictures}
             center={this.state.center}
+            emptyPictures={this.emptyPictures}
           />
           <div className='sidebar'>
             <Searchbox

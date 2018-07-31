@@ -18,6 +18,7 @@ class Map extends Component {
     this.setState(prevState => ({
       isOpen: !prevState.isOpen
     }))
+    this.props.emptyPictures()
   }
 
   render () {
@@ -43,8 +44,22 @@ class Map extends Component {
           <InfoWindow
             onCloseClick={this.onToggleOpen}>
             <div className='infoWindow'>
-              {this.props.pictures}
-              {location.name}
+              <div className='infoWindow-text'>
+                <div className='name'>
+                  {location.name}
+                </div>
+                <div className='wiki-text'>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi tempore quia esse hic, quos odio cum quas dignissimos inventore magnam impedit nam accusamus harum. Corporis ad voluptates, voluptas esse est repudiandae quo quibusdam temporibus quasi labore, officiis minima tempore. Quae dicta inventore minima sed quibusdam quisquam, corrupti repellat reiciendis numquam!
+                </div>
+
+              </div>
+              <div className='infoWindow-pictures'>
+                {this.props.pictures}
+                <a href={'https://www.flickr.com/search/?text=' + location.name}>See more Images...</a>
+              </div>
+              <div className='credits'>
+                <em>Text powered by Wikipedia. Images powered by Flickr.</em>
+              </div>
             </div>
           </InfoWindow>
         )}

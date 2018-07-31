@@ -77,12 +77,28 @@ ul li:hover{
     width: 30px;
 }
 .infoWindow{
-    height: 15rem;
+    height: 25rem;
     display: flex;
-   
+    flex-direction: column;
+    width: 550px !important;
+
+}
+.infoWindow-pictures{
+    width: 100%;
+}
+.infoWindow-text{
+    margin: 1rem 0;
+}
+.name{
+    margin-bottom: 1rem;
+    font-weight: 500;
 }
 .picture{
-    height: 80%;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.credits{
+    margin-top: 1rem;
 }
 
 
