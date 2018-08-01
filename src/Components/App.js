@@ -35,8 +35,6 @@ class App extends Component {
   }
   // get Flickr photos, code adapted from: https://www.youtube.com/watch?v=RkXotG7YUek
   getFlickr = () => {
-    // const flickrKey = '2c26b3886ab51247626d4745d7ae21c8'
-
     fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2c26b3886ab51247626d4745d7ae21c8&tags='${this.state.currentLocation.keywords}'&per_page=20&page=1&sort=relevance&orientation=landscape&format=json&nojsoncallback=1`)
       .then(function (response) {
         return response.json()
@@ -84,7 +82,8 @@ class App extends Component {
 
   setCurrentLocation = (location) => {
     if (this.state.currentLocation.name === location.name) {
-
+      console.log('currentlocation', this.state.currentLocation)
+      console.log('location', location)
     } else {
       this.emptyPictures()
       this.setState({ currentLocation: location },
@@ -136,12 +135,12 @@ class App extends Component {
           <div className='sidebar'>
             <Searchbox
               updateQuery={this.updateQuery}
-              filteredLocations={this.state.filteredLocations}
               query={this.state.query}
             />
             <PlacesList
               locations={this.state.filteredLocations}
               setCurrentLocation={this.setCurrentLocation}
+              updateQuery={this.updateQuery}
             />
           </div>
 

@@ -21,6 +21,8 @@ class Map extends Component {
     this.props.emptyPictures()
   }
 
+  // fit Bounds based on all shown locations, code adapted from: https://github.com/tomchentw/react-google-maps/issues/707
+
   render () {
     return (
       <GoogleMap

@@ -2,8 +2,8 @@ import React from 'react'
 
 function PlacesList (props) {
   return (
-    <div className='placeslist'>
-      <ul tabIndex='1' role='tablist' aria-label='locations'>
+    <div className='places'>
+      <ul className='placeslist' tabIndex='1' role='tablist' aria-label='locations'>
         {props.locations.length > 0
           ? (
             props.locations.map(location =>
@@ -13,7 +13,7 @@ function PlacesList (props) {
                 }}
                 tabIndex='1'
                 role='tab'
-                aria-setsize='3'
+                aria-setsize='6'
                 aria-posinset={location.number}>
                 {location.name}
 
@@ -27,6 +27,20 @@ function PlacesList (props) {
         }
 
       </ul>
+
+      <div className='filter-options'>
+        <select className='options' onChange={(event) => props.setCurrentLocation(event.target.value)} aria-label='select a location' tabIndex='1'>
+          <option value=''>Select a location...</option>
+          {props.locations.map(location =>
+            <option key={location.name}
+              value={location}
+              aria-setsize='6'
+              aria-posinset={location.number}>
+              {location.name}
+            </option>
+          )}
+        </select>
+      </div>
     </div>
 
   )

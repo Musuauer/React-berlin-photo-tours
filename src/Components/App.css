@@ -34,7 +34,6 @@ html, body, #root {
 .sidebar{
     width:25%;
     min-width: 150px;
-   
 }
 .searchbox{
     padding-right: 1rem;
@@ -55,6 +54,9 @@ ul{
 ul li:hover{
     color: rgb(89, 89, 216);
     cursor: pointer;
+}
+.filter-options{
+    display: none;
 }
 
 /*-------------------MAP--------------------*/
@@ -79,8 +81,6 @@ ul li:hover{
     display: flex;
     flex-direction: column;
     width: 550px !important;
-
-
 }
 .infoWindow-pictures{
     width: 100%;
@@ -120,7 +120,7 @@ ul li:hover{
     }
     .map-container{
         position: relative;
-        height: 18rem;
+        height: 75vh;
         width: 100%;
         z-index: 999;
         right: 0;
@@ -134,5 +134,22 @@ ul li:hover{
     }
     .placeslist{
         margin-top: 1rem;
+    }
+    .infoWindow{
+        height: 12rem;
+        width: 250px !important;
+    }
+    .placeslist{
+        display: none;
+    }
+    .filter-options{
+        display: block;
+        margin-top: 1rem;
+    }
+    .options{
+        border: 1px solid black;
+        border-radius: 0;
+        padding: 5px 5px;
+        font-size: 1rem;
     }
     }
