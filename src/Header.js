@@ -8,9 +8,9 @@ class Header extends Component {
   render () {
     return (
       <header className='App-header'>
-        <h1 className='App-title'>Berlin Photo-tours</h1>
+        <h1 className='App-title' tabIndex='1'>Berlin Photo-tours</h1>
 
-        <p className='App-intro'>
+        <p className='App-intro' tabIndex='1'>
           Discover photography, get to know Berlin.
         </p>
       </header>

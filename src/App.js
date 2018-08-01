@@ -55,7 +55,6 @@ class App extends Component {
   // get Wikipedia text, code adapted from: https://www.youtube.com/watch?v=RPz75gcHj18
   getWikipedia = () => {
     let that = this
-    console.log(this.state.currentLocation.id)
     let term = this.state.currentLocation.id
     fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&exintro=1&prop=extracts&formatversion=2&titles=${term.replace(/\s+/g, '_')}`)
       .then(function (response) {

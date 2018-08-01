@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
-
-
 class Searchbox extends Component {
-
   render () {
     const { updateQuery, query } = this.props
     return (
@@ -14,6 +11,9 @@ class Searchbox extends Component {
           placeholder='Filter by name'
           value={query}
           onChange={(event) => updateQuery(event.target.value)}
+          tabIndex='1'
+          role='search'
+          aria-label='search box'
         />
       </div>
 

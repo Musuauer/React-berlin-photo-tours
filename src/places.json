@@ -1,5 +1,6 @@
 [
     {
+    "number": 1,
     "name": "Kreuzberg",
     "id": "Kreuzberg",
     "keywords": "kreuzberg berlin",
@@ -9,6 +10,7 @@
     }
   },
   {
+    "number": 2,
     "name": "Potsdamerplatz",
     "id": "Potsdamer Platz",
     "keywords": "Potsdamer%20Platz",
@@ -18,6 +20,7 @@
     }
   },
   {
+    "number": 3,
     "name": "Tempelhof Airport",
     "id": "Berlin Tempelhof Airport",
     "keywords": "tempelhoferfeld",
@@ -27,6 +30,7 @@
     }
   },
   {
+    "number": 4,
     "name": "Tiergarten",
     "id": "Tiergarten (park)",
     "keywords": "Tiergarten%20park",
@@ -36,6 +40,7 @@
     }
   },
   {
+    "number": 5,
     "name": "RAW Gelände",
     "id": "Berlin Warschauer Straße station",
     "keywords": "raw_gelände",
@@ -45,6 +50,7 @@
     }
   },
   {
+    "number": 6,
     "name": "Rixdorf",
     "id": "Neukölln (locality)",
     "keywords": "rixdorf",

@@ -26,6 +26,7 @@ class Map extends Component {
       <GoogleMap
         defaultZoom={12}
         defaultCenter={{ lat: this.props.center.lat, lng: this.props.center.lng }}
+        containerProps={{tabIndex: 0}}
       >
 
         {this.props.isMarkerShown &&
@@ -34,7 +35,7 @@ class Map extends Component {
         key={location.name}
         position={{ lat: location.coordinates.lat, lng: location.coordinates.lng }}
         defaultAnimation={google.maps.Animation.DROP}
-        icon={(location.name === this.props.currentLocation) ? ({ url: './Camera.png', scaledSize: new google.maps.Size(34, 34) }) : ({ url: 'http://maps.google.com/mapfiles/ms/icons/red.png' })
+        icon={(location.name === this.props.currentLocation) ? ({ url: './Camera.png', scaledSize: new google.maps.Size(34, 34) }) : ({ url: 'http://maps.google.com/mapfiles/ms/micons/red-dot.png' })
         }
         onClick={() => {
           this.props.setCurrentLocation(location)
@@ -45,15 +46,14 @@ class Map extends Component {
             onCloseClick={this.onToggleOpen}>
             <div className='infoWindow'>
               <div className='infoWindow-text'>
-                <div className='name'>
+                <div className='name' tabIndex='0'>
                   {location.name}
                 </div>
-                <div className='wiki-text' dangerouslySetInnerHTML={{ __html: this.props.text }} />
-                <a href={'https://en.wikipedia.org/wiki/' + location.id} target={'_blank'}>Read more...</a>
+                <div className='wiki-text' dangerouslySetInnerHTML={{ __html: this.props.text }} tabIndex='0' />
+                <a href={'https://en.wikipedia.org/wiki/' + location.id} target={'_blank'} tabIndex='0'>Read more...</a>
               </div>
               <div className='infoWindow-pictures'>
                 {this.props.pictures}
-                {console.log(this.props.pictures)}
                 <a href={'https://www.flickr.com/search/?text=' + location.name} target={'_blank'}>See more Images...</a>
               </div>
               <div className='credits'>
