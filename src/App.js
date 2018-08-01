@@ -49,11 +49,7 @@ class App extends Component {
         })
         this.setState({ pictures: picArray })
       }.bind(this))
-      .catch(error => {
-        alert(`Flickr images could not load, sorry`)
-        console.log(error)
-        return error
-      })
+      .catch((error) => { console.warn(error) })
   }
 
   // get Wikipedia text, code adapted from: https://www.youtube.com/watch?v=RPz75gcHj18
@@ -75,6 +71,7 @@ class App extends Component {
 
         that.setState({ wikiText: content })
       })
+      .catch((error) => { console.warn(error) })
   }
 
   delayedShowMarker = () => {
