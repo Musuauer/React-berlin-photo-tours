@@ -4,7 +4,7 @@ import Map from './Map'
 import Searchbox from './Searchbox'
 import PlacesList from './PlacesList'
 import Header from './Header'
-import places from './places.json'
+import places from '../places.json'
 
 class App extends Component {
   state = {
