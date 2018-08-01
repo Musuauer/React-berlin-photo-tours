@@ -11,7 +11,7 @@ class Header extends Component {
         <h1 className='App-title'>Berlin Photo-tours</h1>
 
         <p className='App-intro'>
-          Discover Photography, get to know Berlin.
+          Discover photography, get to know Berlin.
         </p>
       </header>
 

@@ -35,7 +35,8 @@ class App extends Component {
   // get Flickr photos, code adapted from: https://www.youtube.com/watch?v=RkXotG7YUek
   getFlickr = () => {
     const flickrKey = '2c26b3886ab51247626d4745d7ae21c8'
-    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${this.state.currentLocation.name}&per_page=10&page=1&sort=relevance&format=json&nojsoncallback=1`)
+
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${this.state.currentLocation.keywords}&per_page=20&page=1&sort=relevance&orientation=landscape&format=json&nojsoncallback=1`)
       .then(function (response) {
         return response.json()
       })
@@ -62,7 +63,10 @@ class App extends Component {
     let term = this.state.currentLocation.id
     fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&exintro=1&prop=extracts&formatversion=2&titles=${term.replace(/\s+/g, '_')}`)
       .then(function (response) {
-        return response.json()
+        if (response.ok) {
+          return response.json()
+        }
+        throw new Error('Wikipedia response was not ok: ' + response.statusText)
       })
       .then(function (jsonResponse) {
         let page = jsonResponse.query.pages

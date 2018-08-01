@@ -82,6 +82,7 @@ ul li:hover{
     flex-direction: column;
     width: 550px !important;
 
+
 }
 .infoWindow-pictures{
     width: 100%;
@@ -89,6 +90,10 @@ ul li:hover{
 .infoWindow-text{
     margin: 1rem 0;
 }
+.wiki-text{
+    margin-bottom: 1rem;
+}
+
 .name{
     margin-bottom: 1rem;
     font-weight: 500;

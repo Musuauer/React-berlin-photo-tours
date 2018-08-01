@@ -49,12 +49,12 @@ class Map extends Component {
                   {location.name}
                 </div>
                 <div className='wiki-text' dangerouslySetInnerHTML={{ __html: this.props.text }} />
-
+                <a href={'https://en.wikipedia.org/wiki/' + location.id} target={'_blank'}>Read more...</a>
               </div>
               <div className='infoWindow-pictures'>
                 {this.props.pictures}
                 {console.log(this.props.pictures)}
-                <a href={'https://www.flickr.com/search/?text=' + location.name}>See more Images...</a>
+                <a href={'https://www.flickr.com/search/?text=' + location.name} target={'_blank'}>See more Images...</a>
               </div>
               <div className='credits'>
                 <em>Text powered by Wikipedia. Images powered by Flickr.</em>
