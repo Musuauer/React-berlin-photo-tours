@@ -5,6 +5,7 @@ import Searchbox from './Searchbox'
 import PlacesList from './PlacesList'
 import Header from './Header'
 import places from '../places.json'
+import Errorboundary from './Errorboundary'
 
 class App extends Component {
   state = {
@@ -34,9 +35,9 @@ class App extends Component {
   }
   // get Flickr photos, code adapted from: https://www.youtube.com/watch?v=RkXotG7YUek
   getFlickr = () => {
-    const flickrKey = '2c26b3886ab51247626d4745d7ae21c8'
+    // const flickrKey = '2c26b3886ab51247626d4745d7ae21c8'
 
-    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${this.state.currentLocation.keywords}&per_page=20&page=1&sort=relevance&orientation=landscape&format=json&nojsoncallback=1`)
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2c26b3886ab51247626d4745d7ae21c8&tags='${this.state.currentLocation.keywords}'&per_page=20&page=1&sort=relevance&orientation=landscape&format=json&nojsoncallback=1`)
       .then(function (response) {
         return response.json()
       })
@@ -120,17 +121,18 @@ class App extends Component {
         <Header />
 
         <div className='container'>
-
-          <Map
-            isMarkerShown={this.state.isMarkerShown}
-            locations={this.state.filteredLocations}
-            currentLocation={this.state.currentLocation.name}
-            setCurrentLocation={this.setCurrentLocation}
-            pictures={this.state.pictures}
-            text={this.state.wikiText}
-            center={this.state.center}
-            emptyPictures={this.emptyPictures}
-          />
+          <Errorboundary>
+            <Map
+              isMarkerShown={this.state.isMarkerShown}
+              locations={this.state.filteredLocations}
+              currentLocation={this.state.currentLocation.name}
+              setCurrentLocation={this.setCurrentLocation}
+              pictures={this.state.pictures}
+              text={this.state.wikiText}
+              center={this.state.center}
+              emptyPictures={this.emptyPictures}
+            />
+          </Errorboundary>
           <div className='sidebar'>
             <Searchbox
               updateQuery={this.updateQuery}
