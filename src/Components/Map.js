@@ -9,19 +9,15 @@ const props = {
   containerElement: <div className='map-container' />,
   mapElement: <div style={{ height: `100%` }} className='map' />
 }
+
+const defaultMapOptions = {
+  disableDefaultUI: true,
+  navigationControl: false,
+  mapTypeControl: false,
+  scaleControl: false,
+  draggable: true
+}
 class Map extends Component {
-  state= {
-    isOpen: false
-  }
-
-  onToggleOpen = (isOpen) => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen
-    }))
-    this.props.emptyPictures()
-  }
-
-  // fit Bounds based on all shown locations, code adapted from: https://github.com/tomchentw/react-google-maps/issues/707
 
   render () {
     return (
@@ -29,6 +25,8 @@ class Map extends Component {
         defaultZoom={12}
         defaultCenter={{ lat: this.props.center.lat, lng: this.props.center.lng }}
         containerProps={{tabIndex: 0}}
+        defaultOptions={defaultMapOptions}
+        onClick={this.props.emptyCurrentLocation}
       >
 
         {this.props.isMarkerShown &&
@@ -45,7 +43,7 @@ class Map extends Component {
       >
         {location.name === this.props.currentLocation && (
           <InfoWindow
-            onCloseClick={this.onToggleOpen}>
+            onCloseClick={this.props.emptyCurrentLocation}>
             <div className='infoWindow'>
               <div className='infoWindow-text'>
                 <div className='name' tabIndex='0'>

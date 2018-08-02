@@ -92,6 +92,11 @@ class App extends Component {
     }
   }
 
+  emptyCurrentLocation = () => {
+    this.emptyPictures()
+    this.setState({ currentLocation: {} })
+  }
+
   emptyPictures = () => {
     this.setState({ pictures: [] })
   }
@@ -130,6 +135,7 @@ class App extends Component {
               text={this.state.wikiText}
               center={this.state.center}
               emptyPictures={this.emptyPictures}
+              emptyCurrentLocation={this.emptyCurrentLocation}
             />
           </Errorboundary>
           <div className='sidebar'>
