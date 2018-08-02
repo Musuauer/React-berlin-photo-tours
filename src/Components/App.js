@@ -150,7 +150,7 @@ class App extends Component {
             />
             <div className='contact'>
               <p><a href='mailto:info@guillermogudino.com'>
-                info@guillermogudino.com
+                Contact
               </a>
               </p>
             </div>

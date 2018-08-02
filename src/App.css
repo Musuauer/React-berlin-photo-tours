@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 html, body, #root {
     height: 100vh;
   }
@@ -6,7 +7,7 @@ html, body, #root {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 
 }
 
@@ -30,6 +31,9 @@ a{
     width: 100%;
     margin-top: 2rem;
     letter-spacing: 1px;
+}
+.App-title{
+    font-weight: 700;
 }
 .App-intro{
     color: rgb(89, 89, 216);
