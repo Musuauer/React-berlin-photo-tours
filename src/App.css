@@ -6,7 +6,8 @@ html, body, #root {
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 
 }
@@ -43,8 +44,11 @@ a{
 .container{
     width: 100%;
     margin-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     height: 80%;
 }
 .sidebar{
@@ -52,8 +56,13 @@ a{
     height: 80vh;
     min-width: 150px;
     letter-spacing: 1px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 .sidebar li:focus{
     border: none;
@@ -105,8 +114,13 @@ ul li:hover{
 }
 .infoWindow{
     height: 25rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     width: 550px !important;
 }
 .infoWindow-pictures{
@@ -186,7 +200,9 @@ ul li:hover{
     .options-container{
         background: white;
         border: 1px solid  rgb(89, 89, 216);
-        transform: translateY(-220px);
+        -webkit-transform: translateY(-220px);
+            -ms-transform: translateY(-220px);
+                transform: translateY(-220px);
     }
     .option{
         letter-spacing: 2px;
