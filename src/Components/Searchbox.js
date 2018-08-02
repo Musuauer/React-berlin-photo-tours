@@ -4,7 +4,6 @@ class Searchbox extends Component {
   render () {
     const { updateQuery, query } = this.props
     return (
-
       <div className='searchbox'>
         <input
           type='text'
@@ -16,7 +15,6 @@ class Searchbox extends Component {
           aria-label='search box'
         />
       </div>
-
     )
   }
 }

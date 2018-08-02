@@ -18,15 +18,28 @@ class App extends Component {
     pictures: []
   }
 
+  /**
+   *Get the locations from the JSON file, then pass them to state. 
+   *When done, equal the filtered locations array to the locations array, so that they have the same information,
+   *this is to display all the locations at the beginning, before any user input in the search box.
+   * @memberof App
+   */
   componentDidMount = () => {
     const placesArray = places
-
     this.setState(
       { locations: placesArray },
       () => this.setState((prevState) => {
         return {filteredLocations: prevState.locations}
       }))
     this.delayedShowMarker()
+  }
+
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({
+        isMarkerShown: true
+      })
+    }, 2000)
   }
 
   getAPIs = () => {
@@ -72,18 +85,13 @@ class App extends Component {
       .catch((error) => { console.warn(error) })
   }
 
-  delayedShowMarker = () => {
-    setTimeout(() => {
-      this.setState({
-        isMarkerShown: true
-      })
-    }, 2000)
-  }
-
+  /**
+   * To be triggered when user clicks on a location name or marker.
+   *
+   * @memberof App
+   */
   setCurrentLocation = (location) => {
     if (this.state.currentLocation.name === location.name) {
-      console.log('currentlocation', this.state.currentLocation)
-      console.log('location', location)
     } else {
       this.emptyPictures()
       this.setState({ currentLocation: location },
@@ -101,6 +109,11 @@ class App extends Component {
     this.setState({ pictures: [] })
   }
 
+  /**
+   * Filter the locations array based on user input in the search box.
+   *
+   * @memberof App
+   */
   updateQuery = (query) => {
     this.setState({ query })
     if (query) {
@@ -134,7 +147,6 @@ class App extends Component {
               pictures={this.state.pictures}
               text={this.state.wikiText}
               center={this.state.center}
-              emptyPictures={this.emptyPictures}
               emptyCurrentLocation={this.emptyCurrentLocation}
             />
           </Errorboundary>

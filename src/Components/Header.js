@@ -1,22 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Header extends Component {
-  static defaultProps = {
+function Header () {
+  return (
+    <header className='App-header'>
+      <h1 className='App-title' tabIndex='1'>Berlin Photo-tours</h1>
 
-  }
-
-  render () {
-    return (
-      <header className='App-header'>
-        <h1 className='App-title' tabIndex='1'>Berlin Photo-tours</h1>
-
-        <p className='App-intro' tabIndex='1'>
+      <p className='App-intro' tabIndex='1'>
           Discover photography, get to know Berlin.
-        </p>
-      </header>
+      </p>
+    </header>
 
-    )
-  }
+  )
 }
 
 export default Header

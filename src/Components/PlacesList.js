@@ -21,6 +21,9 @@ class PlacesList extends Component {
     return (
       <div className='places'>
         <ul className='placeslist' tabIndex='1' role='tablist' aria-label='locations'>
+
+          {/* generate locations list from the filtered locations array and show a sign when there are no results */}
+
           {this.props.locations.length > 0
             ? (
               this.props.locations.map(location =>
@@ -44,6 +47,8 @@ class PlacesList extends Component {
           }
 
         </ul>
+
+        {/* for smartphone: custom made drop-down menu, actually a drop-up, which sets the current location */}
 
         <div className='filter-options'>
           <div

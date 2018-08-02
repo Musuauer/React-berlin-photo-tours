@@ -11,6 +11,7 @@ const props = {
   mapElement: <div style={{ height: `100%` }} className='map' />
 }
 
+// Disable default UI from Google Maps and change map style from JSON file
 const defaultMapOptions = {
   styles: mapStyles,
   disableDefaultUI: true,
@@ -28,9 +29,10 @@ class Map extends Component {
         defaultCenter={{ lat: this.props.center.lat, lng: this.props.center.lng }}
         containerProps={{tabIndex: 0}}
         defaultOptions={defaultMapOptions}
-        // defaultOptions={{ styles: demoFancyMapStyles }}
         onClick={this.props.emptyCurrentLocation}
       >
+
+        {/* generate markers from the filtered locations array, if clicked, change icon and set currentlocation */}
 
         {this.props.isMarkerShown &&
     this.props.locations.map(location =>
@@ -44,6 +46,8 @@ class Map extends Component {
           this.props.setCurrentLocation(location)
         }}
       >
+        {/* generate info Windows from the filtered locations array if the location matches the current Location, then fill them with wikipedia text and flickr images */}
+
         {location.name === this.props.currentLocation && (
           <InfoWindow
             onCloseClick={this.props.emptyCurrentLocation}>
