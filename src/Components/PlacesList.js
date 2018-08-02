@@ -1,49 +1,82 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-function PlacesList (props) {
-  return (
-    <div className='places'>
-      <ul className='placeslist' tabIndex='1' role='tablist' aria-label='locations'>
-        {props.locations.length > 0
-          ? (
-            props.locations.map(location =>
-              <li key={location.name}
-                onClick={() => {
-                  props.setCurrentLocation(location)
-                }}
-                tabIndex='1'
-                role='tab'
-                aria-setsize='6'
-                aria-posinset={location.number}>
-                {location.name}
+class PlacesList extends Component {
+  state= {
+    isOpen: false
+  }
 
+  toggleListOpen = (isOpen) => {
+    console.log(this.state.isOpen)
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }))
+  }
+
+  setLocationAndCloseList = (location) => {
+    this.props.setCurrentLocation(location)
+    this.toggleListOpen()
+  }
+
+  render () {
+    return (
+      <div className='places'>
+        <ul className='placeslist' tabIndex='1' role='tablist' aria-label='locations'>
+          {this.props.locations.length > 0
+            ? (
+              this.props.locations.map(location =>
+                <li key={location.name}
+                  onClick={() => {
+                    this.props.setCurrentLocation(location)
+                  }}
+                  tabIndex='1'
+                  role='tab'
+                  aria-setsize='6'
+                  aria-posinset={location.number}>
+                  {location.name}
+
+                </li>
+              )
+            ) : (
+              <li>
+                <em>No results...</em>
               </li>
             )
-          ) : (
-            <li>
-              <em>No results...</em>
-            </li>
+          }
+
+        </ul>
+
+        <div className='filter-options'>
+          <div
+            className='options'
+            aria-label='select a location'
+            tabIndex='1'
+            onClick={this.toggleListOpen}
+          >
+        Choose a location...
+          </div>
+
+          {this.state.isOpen &&
+          (
+            <div className='options-container'>
+              {this.props.locations.map(location =>
+                <div key={location.name}
+                  className='option'
+                  onClick={() => {
+                    this.setLocationAndCloseList(location)
+                  }}
+                  aria-setsize='6'
+                  aria-posinset={location.number}>
+                  {location.name}
+                </div>
+              )
+              }
+            </div>
           )
-        }
-
-      </ul>
-
-      <div className='filter-options'>
-        <select className='options' onChange={(event) => props.setCurrentLocation(event.target.value)} aria-label='select a location' tabIndex='1'>
-          <option value=''>Select a location...</option>
-          {props.locations.map(location =>
-            <option key={location.name}
-              value={location}
-              aria-setsize='6'
-              aria-posinset={location.number}>
-              {location.name}
-            </option>
-          )}
-        </select>
+          }
+        </div>
       </div>
-    </div>
-
-  )
+    )
+  }
 }
 
 export default PlacesList

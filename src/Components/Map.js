@@ -18,7 +18,6 @@ const defaultMapOptions = {
   draggable: true
 }
 class Map extends Component {
-
   render () {
     return (
       <GoogleMap
