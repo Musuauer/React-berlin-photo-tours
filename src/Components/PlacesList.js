@@ -65,7 +65,8 @@ class PlacesList extends Component {
                     this.setLocationAndCloseList(location)
                   }}
                   aria-setsize='6'
-                  aria-posinset={location.number}>
+                  aria-posinset={location.number}
+                  tabIndex='1'>
                   {location.name}
                 </div>
               )

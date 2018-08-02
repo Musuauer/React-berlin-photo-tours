@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+import '../App.css'
 import Map from './Map'
 import Searchbox from './Searchbox'
 import PlacesList from './PlacesList'

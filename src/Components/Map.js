@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+import mapStyles from '../mapStyles.json'
 
 const props = {
   googleMapURL: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDWSSc0yFXxZFgSE1XjqCwF6F9oA6hmujA&libraries=geometry,drawing,places',
@@ -11,12 +12,14 @@ const props = {
 }
 
 const defaultMapOptions = {
+  styles: mapStyles,
   disableDefaultUI: true,
   navigationControl: false,
   mapTypeControl: false,
   scaleControl: false,
   draggable: true
 }
+
 class Map extends Component {
   render () {
     return (
@@ -25,6 +28,7 @@ class Map extends Component {
         defaultCenter={{ lat: this.props.center.lat, lng: this.props.center.lng }}
         containerProps={{tabIndex: 0}}
         defaultOptions={defaultMapOptions}
+        // defaultOptions={{ styles: demoFancyMapStyles }}
         onClick={this.props.emptyCurrentLocation}
       >
 

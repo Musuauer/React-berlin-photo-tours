@@ -7,8 +7,14 @@ html, body, #root {
     padding: 0;
     box-sizing: border-box;
     font-family: Helvetica, sans-serif;
+
 }
 
+/* -change default outline focus to match the style of the rest of the site- */
+*:focus {
+    outline: none !important;
+    border: 1px solid rgb(89, 89, 216);
+   }
 .App{
     position: relative;
     height: 100%;
@@ -35,6 +41,10 @@ html, body, #root {
 .sidebar{
     width:25%;
     min-width: 150px;
+    letter-spacing: 1px;
+}
+.sidebar li:focus{
+    border: none;
 }
 .searchbox{
     padding-right: 1rem;
@@ -111,7 +121,7 @@ ul li:hover{
 
 /*---------------MEDIA QUERIES---------------------------*/
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 700px){
     .App{
         width: 95%;
     }
@@ -120,7 +130,7 @@ ul li:hover{
     }
     .map-container{
         position: relative;
-        height: 75vh;
+        height: 72vh;
         width: 100%;
         right: 0;
         top: 0;
