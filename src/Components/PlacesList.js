@@ -74,6 +74,12 @@ class PlacesList extends Component {
             </div>
           )
           }
+          <div className='contact-smartphone'>
+            <p><a href='mailto:info@guillermogudino.com'>
+              info@guillermogudino.com
+            </a>
+            </p>
+          </div>
         </div>
       </div>
     )

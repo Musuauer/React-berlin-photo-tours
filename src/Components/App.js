@@ -148,6 +148,12 @@ class App extends Component {
               setCurrentLocation={this.setCurrentLocation}
               updateQuery={this.updateQuery}
             />
+            <div className='contact'>
+              <p><a href='mailto:info@guillermogudino.com'>
+                info@guillermogudino.com
+              </a>
+              </p>
+            </div>
           </div>
 
         </div>

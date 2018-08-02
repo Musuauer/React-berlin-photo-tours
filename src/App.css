@@ -15,6 +15,10 @@ html, body, #root {
     outline: none !important;
     border: 1px solid rgb(89, 89, 216);
    }
+a{
+    color:  rgb(89, 89, 216);
+    text-decoration: none;
+}
 .App{
     position: relative;
     height: 100%;
@@ -40,8 +44,11 @@ html, body, #root {
 }
 .sidebar{
     width:25%;
+    height: 80vh;
     min-width: 150px;
     letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
 }
 .sidebar li:focus{
     border: none;
@@ -65,6 +72,10 @@ ul{
 ul li:hover{
     color: rgb(89, 89, 216);
     cursor: pointer;
+}
+.contact{
+    font-size: 1.2rem;
+    margin-top: auto;
 }
 .filter-options{
     display: none;
@@ -177,5 +188,9 @@ ul li:hover{
         margin-left: 6px;
         margin: 1rem 1rem;
         z-index: 9999;
+    }
+    .contact-smartphone{
+        font-size: 1.1rem;
+        margin-top: 1rem;
     }
     }
