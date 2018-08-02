@@ -2,7 +2,7 @@
 
 This is the final project for the Front-End Nano degree of Udacity, done under a Google scholarship.
 
-This is a web app that displays a Google map with the possible locations for a Photo-tour in Berlin.
+The web app displays a Google map with the possible locations for a Photo-tour in Berlin.
 
 The user can choose from a series of places where the workshop can take place. If a location name or marker is clicked, additional information of the place is displayed inside an Info Window. Some facts are fetched from the Wikipedia API and a collection of images from that place are drawn from the Flickr API.
 To make things easier, the locations can be filtered via a search box.
