@@ -19,6 +19,7 @@ const defaultMapOptions = {
   mapTypeControl: false,
   scaleControl: false,
   draggable: true
+
 }
 
 class Map extends Component {
@@ -30,7 +31,7 @@ class Map extends Component {
         containerProps={{tabIndex: 0}}
         defaultOptions={defaultMapOptions}
         onClick={this.props.emptyCurrentLocation}
-        // onerror="googleError()
+        onTilesLoaded={() => { document.getElementsByTagName('iframe')[0].title = 'Berlin photo tours google map' }}
       >
 
         {/* generate markers from the filtered locations array, if clicked, change icon and set currentlocation */}
@@ -53,20 +54,43 @@ class Map extends Component {
           <InfoWindow
             onCloseClick={this.props.emptyCurrentLocation}>
             <div className='infoWindow'>
+
               <div className='infoWindow-text'>
                 <div className='name' tabIndex='0'>
                   {location.name}
                 </div>
-                <div className='wiki-text' dangerouslySetInnerHTML={{ __html: this.props.text }} tabIndex='0' />
-                <a href={'https://en.wikipedia.org/wiki/' + location.id} target={'_blank'} tabIndex='0'>Read more...</a>
+                {this.props.wikiHasError
+                  ? (
+                    <div className='api-error'>
+                  -There was an error loading the text from Wikipedia-
+                    </div>
+                  ) : (
+                    <div>
+                      <div className='wiki-text' dangerouslySetInnerHTML={{ __html: this.props.text }} tabIndex='0' />
+                      <a href={'https://en.wikipedia.org/wiki/' + location.id} target={'_blank'} tabIndex='0'>Read more...</a>
+                    </div>
+                  )
+                }
               </div>
+
               <div className='infoWindow-pictures'>
-                {this.props.pictures}
-                <a href={'https://www.flickr.com/search/?text=' + location.name} target={'_blank'}>See more Images...</a>
+                {this.props.flickrHasError
+                  ? (
+                    <div className='api-error'>
+                  -There was an error loading the images from Flickr-
+                    </div>
+                  ) : (
+                    <div>{this.props.pictures}
+                      <a href={'https://www.flickr.com/search/?text=' + location.name} target={'_blank'}>See more Images...</a>
+                    </div>
+                  )
+                }
               </div>
+
               <div className='credits'>
                 <em>Text powered by Wikipedia. Images powered by Flickr.</em>
               </div>
+
             </div>
           </InfoWindow>
         )}

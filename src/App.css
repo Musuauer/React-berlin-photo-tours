@@ -64,9 +64,9 @@ a{
         -ms-flex-direction: column;
             flex-direction: column;
 }
-.sidebar li:focus{
+/* .sidebar li:focus{
     border: none;
-}
+} */
 .searchbox{
     padding-right: 1rem;
     margin-bottom: 2rem;
@@ -93,6 +93,9 @@ ul li:hover{
 }
 .filter-options{
     display: none;
+}
+.api-error{
+    color: red;
 }
 
 /*-------------------MAP--------------------*/

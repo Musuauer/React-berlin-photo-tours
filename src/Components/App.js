@@ -16,7 +16,9 @@ class App extends Component {
     filteredLocations: [],
     center: { lat: 52.502941, lng: 13.403169 },
     pictures: [],
-    googleHasError: false
+    googleHasError: false,
+    wikiHasError: false,
+    flickrHasError: false
   }
 
   /**
@@ -50,9 +52,18 @@ class App extends Component {
     this.getFlickr()
     this.getWikipedia()
   }
+
+  // generic function to handle API errors, taken from https://www.tjvantoll.com/2015/09/13/fetch-and-errors/
+  handleErrors = (response) => {
+    if (!response.ok) {
+      throw Error(response.statusText)
+    }
+    return response
+  }
   // get Flickr photos, code adapted from: https://www.youtube.com/watch?v=RkXotG7YUek
   getFlickr = () => {
     fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2c26b3886ab51247626d4745d7ae21c8&tags='${this.state.currentLocation.keywords}'&per_page=20&page=1&sort=relevance&orientation=landscape&format=json&nojsoncallback=1`)
+      .then(this.handleErrors)
       .then(function (response) {
         return response.json()
       })
@@ -65,7 +76,10 @@ class App extends Component {
         })
         this.setState({ pictures: picArray })
       }.bind(this))
-      .catch((error) => { console.warn(error) })
+      .catch(error => {
+        console.log(error)
+        this.setState({ flickrHasError: true })
+      })
   }
 
   // get Wikipedia text, code adapted from: https://www.youtube.com/watch?v=RPz75gcHj18
@@ -73,6 +87,7 @@ class App extends Component {
     let that = this
     let term = this.state.currentLocation.id
     fetch(`https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&exintro=1&prop=extracts&formatversion=2&titles=${term.replace(/\s+/g, '_')}`)
+      .then(this.handleErrors)
       .then(function (response) {
         if (response.ok) {
           return response.json()
@@ -86,7 +101,10 @@ class App extends Component {
 
         that.setState({ wikiText: content })
       })
-      .catch((error) => { console.warn(error) })
+      .catch(error => {
+        console.log(error)
+        this.setState({ wikiHasError: true })
+      })
   }
 
   /**
@@ -158,6 +176,8 @@ class App extends Component {
               text={this.state.wikiText}
               center={this.state.center}
               emptyCurrentLocation={this.emptyCurrentLocation}
+              wikiHasError={this.state.wikiHasError}
+              flickrHasError={this.state.flickrHasError}
             />
           </Errorboundary>
           <div className='sidebar'>
@@ -171,7 +191,7 @@ class App extends Component {
               updateQuery={this.updateQuery}
             />
             <div className='contact'>
-              <p><a href='mailto:info@guillermogudino.com'>
+              <p><a href='mailto:info@guillermogudino.com' tabIndex='1'>
                 Contact
               </a>
               </p>
