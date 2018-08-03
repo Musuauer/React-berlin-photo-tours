@@ -1,35 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class ErrorBoundary extends Component {
-  constructor (props) {
-    super(props)
-    this.state = { error: null, errorInfo: null }
-  }
+/**
+ * Code implemented from https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html
+ *
+ * @class ErrorBoundary
+ *
+ */
+const ErrorBoundary = (props) => {
+  if (props.googleError === true) {
+    return (
 
-  componentDidCatch (error, errorInfo) {
-    // Catch errors in any components below and re-render with error message
-    this.setState({
-      error: error,
-      errorInfo: errorInfo
-    })
+      <div className='google-error'>
+        <h3>There was an error loading the map.</h3>
+        <p>Please try again later or send me an email.</p>
+      </div>
+    )
   }
-
-  render () {
-    if (this.state.errorInfo) {
-      // Error path
-      return (
-        <div>
-          <h2>Something went wrong.</h2>
-          <details style={{ whiteSpace: 'pre-wrap' }}>
-            {this.state.error && this.state.error.toString()}
-            <br />
-            {this.state.errorInfo.componentStack}
-          </details>
-        </div>
-      )
-    }
-    return this.props.children
-  }
+  return props.children
 }
 
 export default ErrorBoundary

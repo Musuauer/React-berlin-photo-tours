@@ -15,16 +15,20 @@ class App extends Component {
     query: '',
     filteredLocations: [],
     center: { lat: 52.502941, lng: 13.403169 },
-    pictures: []
+    pictures: [],
+    googleHasError: false
   }
 
   /**
-   *Get the locations from the JSON file, then pass them to state. 
+   *Get the locations from the JSON file, then pass them to state.
    *When done, equal the filtered locations array to the locations array, so that they have the same information,
    *this is to display all the locations at the beginning, before any user input in the search box.
    * @memberof App
    */
   componentDidMount = () => {
+    window.gm_authFailure = this.gm_authFailure
+    // let googleError = document.getElementById('googleError')
+    // googleError.setAttribute('style', 'display: block;')
     const placesArray = places
     this.setState(
       { locations: placesArray },
@@ -131,6 +135,11 @@ class App extends Component {
     }
   }
 
+  // from https://developers.google.com/maps/documentation/javascript/events#auth-errors
+  gm_authFailure = () => {
+    this.setState({ googleHasError: true })
+  }
+
   render () {
     return (
       <div className='App'>
@@ -138,7 +147,8 @@ class App extends Component {
         <Header />
 
         <div className='container'>
-          <Errorboundary>
+          <Errorboundary
+            googleError={this.state.googleHasError}>
             <Map
               isMarkerShown={this.state.isMarkerShown}
               locations={this.state.filteredLocations}

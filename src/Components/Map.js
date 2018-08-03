@@ -30,6 +30,7 @@ class Map extends Component {
         containerProps={{tabIndex: 0}}
         defaultOptions={defaultMapOptions}
         onClick={this.props.emptyCurrentLocation}
+        // onerror="googleError()
       >
 
         {/* generate markers from the filtered locations array, if clicked, change icon and set currentlocation */}
