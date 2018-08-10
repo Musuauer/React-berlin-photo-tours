@@ -121,5 +121,14 @@
                 "visibility": "on"
             }
         ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#5959d8"
+            }
+        ]
     }
 ]
