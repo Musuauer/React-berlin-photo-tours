@@ -178,13 +178,16 @@ ul li:hover{
     }
     .map-container{
         position: relative;
-        height: 72vh;
+        height: 65vh;
         width: 100%;
         right: 0;
         top: 0;
       }
+    .App-title{
+        font-size: 1.9rem;
+    }
     .App-intro{
-        font-size: 1rem;
+        font-size: .9rem;
     }
     .searchbox{
         display: none;
@@ -231,5 +234,8 @@ ul li:hover{
     .contact-smartphone{
         font-size: 1.1rem;
         margin-top: 1rem;
+    }
+    .contact{
+        display: none;
     }
     }
