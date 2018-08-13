@@ -81,7 +81,7 @@ class PlacesList extends Component {
           }
           <div className='contact-smartphone'>
             <p><a href='mailto:info@guillermogudino.com'>
-              info@guillermogudino.com
+              Send me an e-mail
             </a>
             </p>
           </div>
