@@ -207,7 +207,7 @@ ul li:hover{
         width:100%;
         min-width: 100%;
         letter-spacing: 1px;
-        height: auto;
+        height: 10rem;
     }
     .filter-options{
         display: block;
