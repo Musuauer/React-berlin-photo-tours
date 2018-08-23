@@ -218,9 +218,7 @@ ul li:hover{
         border-radius: 0;
         padding: 5px 1rem;
         font-size: 1rem;
-    }
-    .options:focus{
-        background-color: rgb(89, 89, 216);
+        -webkit-tap-highlight-color: rgb(89, 89, 216);
     }
     .options-container{
         background: white;
