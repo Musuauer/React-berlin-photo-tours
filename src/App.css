@@ -9,7 +9,7 @@ html, body, #root {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
-
+    background-color: yellow;
 }
 
 /* -change default outline focus to match the style of the rest of the site- */
