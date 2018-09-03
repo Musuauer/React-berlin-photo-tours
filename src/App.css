@@ -175,6 +175,9 @@ ul li:hover{
     .App-header{
         margin-top: 1rem;
     }
+    .container{
+        display: flex;
+    }
     .map-container{
         position: relative;
         height: 55vh;

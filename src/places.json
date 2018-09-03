@@ -58,6 +58,26 @@
       "lat": 52.474500,
       "lng": 13.446964
     }
+  },
+  {
+    "number": 7,
+    "name": "Treptower Park",
+    "id": "Treptower_Park",
+    "keywords": "Treptower park",
+    "coordinates": {
+      "lat": 52.488298,
+      "lng": 13.474440
+    }
+  },
+  {
+    "number": 8,
+    "name": "Monbijou Park",
+    "id": "Monbijou Park",
+    "keywords": "Monbijou Park",
+    "coordinates": {
+      "lat": 52.523816,
+      "lng": 13.396781
+    }
   }
 
 ]
