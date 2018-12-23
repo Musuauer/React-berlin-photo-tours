@@ -165,6 +165,7 @@ class App extends Component {
         <Header />
 
         <div className='container'>
+        
           <Errorboundary
             googleError={this.state.googleHasError}>
             <Map
@@ -180,6 +181,7 @@ class App extends Component {
               flickrHasError={this.state.flickrHasError}
             />
           </Errorboundary>
+
           <div className='sidebar'>
             <Searchbox
               updateQuery={this.updateQuery}
