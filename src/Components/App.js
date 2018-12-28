@@ -165,7 +165,7 @@ class App extends Component {
         <Header />
 
         <div className='container'>
-        
+
           <Errorboundary
             googleError={this.state.googleHasError}>
             <Map
@@ -194,7 +194,7 @@ class App extends Component {
             />
             <div className='contact'>
               <p><a href='mailto:info@guillermogudino.com' tabIndex='1'>
-                Hire a tour
+                Contact us
               </a>
               </p>
             </div>
