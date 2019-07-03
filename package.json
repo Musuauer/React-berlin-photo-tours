@@ -17,14 +17,17 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "babel-eslint": "^8.2.6"
-  },
   "standard": {
     "parser": "babel-eslint",
     "ignore": [
       "**/node_modules/",
       "**/build/"
     ]
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
